@@ -9,7 +9,13 @@ public class Player {
         tableHand = new Deck();
     }
 
-    public void buildDeck(Deck mainDeck) {
+    public void createHand(Deck mainDeck) {
 
     }
+
+    public void addToTableHand(){
+
+    }
+
+
 }

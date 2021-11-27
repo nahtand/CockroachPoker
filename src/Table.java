@@ -12,12 +12,35 @@ import java.awt.*;
 
  */
 public class Table {
-    JFrame table;
-    BorderLayout mainLayout;
-    GridBagLayout playerLayout;
-    JPanel mainPanel;
-    JPanel player1Panel;
-    JPanel player2Panel;
-    JPanel player3Panel;
-    JPanel player4Panel;
+    //main deck
+    private Deck cardDeck;
+    //user player
+    private Player player;
+    //computer players
+    private CpuPlayer cpu1;
+    private CpuPlayer cpu2;
+    private CpuPlayer cpu3;
+    //GUI stuff
+    private JFrame table;
+    private BorderLayout mainLayout;
+    private GridBagLayout playerLayout;
+    private JPanel mainPanel;
+    private JPanel player1Panel;
+    private JPanel player2Panel;
+    private JPanel player3Panel;
+    private JPanel player4Panel;
+
+    public Table(){
+
+    }
+
+    public void createDeck() {
+
+    }
+    /**
+     * Deals equal ammount of cards to each player from the deck
+     */
+    public void dealCards() {
+
+    }
 }

@@ -20,6 +20,7 @@ public class Deck {
      * @return
      */
     public Card getCard(int index) {
+        return deck.get(index);
 
     }
 
@@ -29,6 +30,10 @@ public class Deck {
      * @return
      */
     public Card popCard(int index) {
+        //
+        Card card = deck.get(index);
+        //remove card from deck
+        return card;
 
     }
 

@@ -17,5 +17,14 @@ public class Player {
 
     }
 
+    public Card pickCard(Card card) {
+        //check if card is in deck, reutrn that card
+        return card;
+    }
+
+    public void pass(){}
+
+    public void accept(){}
+
 
 }

@@ -13,10 +13,13 @@ import java.awt.*;
 
  */
 public class Table {
-    final private int PLAYERCOUNT = 4;
     //main deck
     private Deck cardDeck;
     //user player
+
+    // TODO: IDEA
+        // declare the player pannel in the player class and have methods in the player class that
+        // allow adding of cards to the pannel
     private Player player;
     //computer players
     private CpuPlayer cpu1;
@@ -39,11 +42,15 @@ public class Table {
 
             //sets dimensions for panels that go on the top and bottom
             if(i%2 == 0) {
-                playerPanel.setPreferredSize(new Dimension(900, 192));
+                playerPanel.setPreferredSize(new Dimension(1080, 180));
             }
+
             //sets dimensions for panels that go on the sides
             else {
-                playerPanel.setPreferredSize(new Dimension(196, 517));
+                playerPanel.setPreferredSize(new Dimension(230, 634));
+            }
+            if (i == 0){
+                playerPanel.setPreferredSize(new Dimension(1080, 266));
             }
 
             playerPanels[i] = playerPanel;
@@ -53,8 +60,9 @@ public class Table {
 
     public Table(){
         table = new JFrame();
-        table.setSize(900, 900);
+        table.setSize(1080, 1080);
         table.getContentPane().setLayout(new BorderLayout());
+        table.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         playerPanels = new JPanel[4];
         createPlayerPanels();
@@ -84,17 +92,30 @@ public class Table {
             playerPanels[i].setBorder(BorderFactory.createLineBorder(Color.black));
 
             // adds 4 cards to the player area
-            for(int j = 0; j < 4; j++) {
+            for(int j = 0; j < 8; j++) {
 
-                JButton fillerCard = new JButton(".");
+                Card fillerCard = new Card(CardType.BAT);
 
+                if(i==0) {
+
+
+                    //gbc.fill = GridBagConstraints.VERTICAL;
+                    //gbc.gridx = j;
+                    //gbc.gridy = 0;
+                    // makes cards go to the top
+                    gbc.anchor = GridBagConstraints.PAGE_START;
+                    gbc.weightx = 0;
+                    gbc.weighty = 1;
+                    playerPanels[i].add(fillerCard, gbc);
+                }
                 // north and south spaces
-                if(i%2 ==0) {
+                else if(i == 2) {
                     playerPanels[i].add(fillerCard);
 
                 }
                 // east and west spaces
                 else{
+                    fillerCard.rotateCard(90);
                     gbc.gridx = 0;
                     gbc.gridy = j;
                     playerPanels[i].add(fillerCard, gbc);
@@ -103,7 +124,6 @@ public class Table {
         }
         table.setVisible(true);
     }
-
 
     public void createDeck() {
 

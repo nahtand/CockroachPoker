@@ -1,6 +1,8 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -10,8 +12,8 @@ public class Card extends JButton {
     private ArrayList<Player> previousOwners;
     private Image back;
     private Image front;
+    private RotatedIcon rotatedImage;
 
-    //TODO: 11/27/2021 Get card class working with gui
 
     public Card(CardType type) {
         this.type = type;
@@ -20,8 +22,8 @@ public class Card extends JButton {
         try{
             front = ImageIO.read(getClass().getResource(CardType.getFilePath(type)));
             ImageIcon image = new ImageIcon(front);
-            //RotatedIcon ri = new RotatedIcon(image, ri.getDegrees(rotation));
-            //setIcon(ri);
+            rotatedImage = new RotatedIcon(image, 0);
+            setIcon(rotatedImage);
             setBorderPainted(false);
             setOpaque(false);
             setContentAreaFilled(false);
@@ -29,9 +31,17 @@ public class Card extends JButton {
             setVisible(true);
         }
         catch(IOException e) {
+            System.out.println("file not found");
+            e.getMessage();
 
         }
 
+
+    }
+
+    public void rotateCard(double degree) {
+        rotatedImage.setDegrees(degree);
+        setIcon(rotatedImage);
 
     }
 

@@ -80,6 +80,24 @@ public class Table {
 
     }
 
+    // adds like 8 of each card to the deck
+    public void createGameDeck() {
+        // goes through all the enum values from
+        for(CardType t : CardType.values()){
+            addCardType(8, t);
+        }
+
+
+    }
+
+    // adds given number of cards to game deck
+    public void addCardType(int amount, CardType type) {
+        for(int i = 0; i < amount; i++) {
+            Card c = new Card(type);
+            cardDeck.addCard(c);
+        }
+    }
+
     /**
      * Method to test different components
      * currently testing player pannels
@@ -138,5 +156,7 @@ public class Table {
     public static void main(String[] args) {
         Table game = new Table();
         game.drawTest();
+        game.createGameDeck();
+        game.cardDeck.print();
     }
 }

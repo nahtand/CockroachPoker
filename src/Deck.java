@@ -10,8 +10,8 @@ public class Deck {
     /**
      * adds cards to the deck
      */
-    public void addCard() {
-
+    public void addCard(Card card) {
+        deck.add(card);
     }
 
     /**
@@ -55,5 +55,11 @@ public class Deck {
 
     public void hideCards(int index) {
 
+    }
+
+    public void print() {
+        for(Card c : deck) {
+            System.out.println(c.getType());
+        }
     }
 }
